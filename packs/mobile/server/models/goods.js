@@ -7,7 +7,7 @@ require('../../../shared/server/mongoconn');
 /**
  * 商品
  */
-var GoodSchema = new mongoose.Schema({
+var GoodsSchema = new mongoose.Schema({
 
     //名称/标题
     name: String,
@@ -37,4 +37,4 @@ var GoodSchema = new mongoose.Schema({
     storage: String
 });
 
-module.exports.Order = mongoose.model('Good', GoodSchema);
+module.exports.Order = mongoose.model('Goods', GoodsSchema);

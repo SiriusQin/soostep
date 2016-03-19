@@ -9,11 +9,27 @@ require('../../../shared/server/mongoconn');
  */
 var UserSchema = new mongoose.Schema({
 
-    //用户名
     name: String,
 
-    //创建/同步日期
-    createDate:　Date
+    appUserId: String,
+
+    mobile: String,
+
+    password: String,
+
+    description: String,
+
+    enabled: Boolean,
+
+    weChatId: String,
+
+    isDeleted: Boolean,
+
+    lastLoginTime: Date,
+
+    createTime: Date,
+
+    activeTime: Date
 });
 
-module.exports.Order = mongoose.model('User', UserSchema);
+module.exports.Users = mongoose.model('Users', UserSchema);

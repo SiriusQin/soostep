@@ -11,6 +11,14 @@ app.config(function ($routeProvider) {
             controller: 'Dic',
             templateUrl: 'pages/dic.html'
         })
+        .when('/userManager', {
+            controller: 'userManager',
+            templateUrl: 'pages/userManager.html'
+        })
+        .when('/roles', {
+            controller: 'roles',
+            templateUrl: 'pages/roles.html'
+        })
         .otherwise({
             redirectTo: '/dic'
         });
