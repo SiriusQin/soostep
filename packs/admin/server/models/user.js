@@ -9,27 +9,27 @@ require('../../../shared/server/mongoconn');
  */
 var UserSchema = new mongoose.Schema({
 
-    name: String,
+    Name: String,
 
-    appUserId: String,
+    AppUserId: String,
 
-    mobile: String,
+    Mobile: String,
 
-    password: String,
+    Password: String,
 
-    description: String,
+    Description: String,
 
-    enabled: Boolean,
+    Enabled: { type: Boolean, default: false},
 
-    weChatId: String,
+    WeChatId: String,
 
-    isDeleted: Boolean,
+    IsDeleted: { type: Boolean, default: false},
 
-    lastLoginTime: Date,
+    LastLoginTime: Date,
 
-    createTime: Date,
+    CreateTime: { type: Date, default: Date.now},
 
-    activeTime: Date
+    ActiveTime: Date
 });
 
-module.exports.Users = mongoose.model('Users', UserSchema);
+module.exports.User = mongoose.model('Users', UserSchema);

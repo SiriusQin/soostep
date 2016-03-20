@@ -15,6 +15,10 @@ app.config(function ($routeProvider) {
             controller: 'userManager',
             templateUrl: 'pages/userManager.html'
         })
+        .when('/userList', {
+            controller: 'userIndex',
+            templateUrl: 'pages/userIndex.html'
+        })
         .when('/roles', {
             controller: 'roles',
             templateUrl: 'pages/roles.html'

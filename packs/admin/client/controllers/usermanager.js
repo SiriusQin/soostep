@@ -8,11 +8,33 @@ var title = 'User Management';
 app.controller('userManager', function ($scope, $http, $route) {
     document.title = title;
 
-    $scope.createUser = function (user) {
-        $http.post('/users', user).success(function (result) {
+    $http.get('/roles').success(function (result){
+        $scope.roles = result;
+    });
+
+    $scope.userName = '';
+    $scope.selectedRoleName = '';
+
+    $scope.createUser = function () {
+
+        console.log('Create User');
+        console.log($scope.userName);
+        console.log($scope.selectedRoleName);
+
+        var name = $scope.userName;
+        var roleName = $scope.selectedRoleName;
+
+        /*$http.post('/users', user).success(function (result) {
             if (!result.code) {
                 $route.reload();
             }
-        });
+        });*/
     };
+});
+
+app.controller('userIndex', function($scope, $http, $route){
+
+    $http.get('/users').success(function (result) {
+        $scope.users = result;
+    });
 });

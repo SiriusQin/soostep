@@ -10,19 +10,19 @@ require('../../../shared/server/mongoconn');
  */
 var UserPermissionSchema = new mongoose.Schema({
 
-    userId: ObjectId,
+    UserId: ObjectId,
 
-    permissionId: ObjectId,
+    PermissionId: ObjectId,
 
-    pid: String,
+    Pid: String,
 
-    isDeleted: Boolean,
+    IsDeleted: Boolean,
 
-    assignedTime: Date,
+    AssignedTime: { type: Date, default: Date.now},
 
-    adminUserId: ObjectId,
+    AdminUserId: ObjectId,
 
-    enabled: Boolean
+    Enabled: { type: Boolean, default: true}
 });
 
 module.exports.UserPermission = mongoose.model('UserPermission', UserPermissionSchema);

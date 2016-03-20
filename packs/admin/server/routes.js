@@ -4,6 +4,7 @@
 var router = require('express').Router();
 var dic = require('./services/dic');
 var user = require('./services/users');
+var role = require('./services/roles');
 
 // dic service
 router.get('/dics', dic.list)
@@ -21,5 +22,7 @@ router.get('/users', user.userList)
 router.get('/users/:_id', user.userDetail)
     .put('/users/:_id', user.editUser)
     .delete('/users/:_id', user.deleteUser);
+
+router.get('/roles', role.roleList);
 
 module.exports = router;

@@ -2,27 +2,27 @@
  * Created by Jesse Qin on 3/19/2016.
  */
 
-var User = require('../models/user').Users;
+var User = require('../models/user').User;
 
 module.exports.userList = function (req, res) {
-    User.find().lean().exec(function (err, doc) {
+    User.find().lean().exec(function (err, user) {
         if (err) {
             res.json({code: 500, message: err});
         }
         else {
-            res.json(doc);
+            res.json(user);
         }
     });
 };
 
 module.exports.userDetail = function (req, res) {
     User.findById(req.params._id).lean()
-        .exec(function (err, doc) {
+        .exec(function (err, user) {
             if (err) {
                 res.json({code: 500, message: err});
             }
             else {
-                res.json(doc);
+                res.json(user);
             }
         });
 };

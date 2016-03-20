@@ -2,27 +2,27 @@
  * Created by Jesse Qin on 3/19/2016.
  */
 
-var Permission = require('../models/permissions').Permissions;
+var Permission = require('../models/permission').Permission;
 
 module.exports.permissionList = function (req, res) {
-    Permission.find().lean().exec(function (err, doc) {
+    Permission.find().lean().exec(function (err, permission) {
         if (err) {
             res.json({code: 500, message: err});
         }
         else {
-            res.json(doc);
+            res.json(permission);
         }
     });
 };
 
 module.exports.permissionDetail = function (req, res) {
     Permission.findById(req.params._id).lean()
-        .exec(function (err, doc) {
+        .exec(function (err, permission) {
             if (err) {
                 res.json({code: 500, message: err});
             }
             else {
-                res.json(doc);
+                res.json(permission);
             }
         });
 };
@@ -39,7 +39,6 @@ module.exports.createPermission = function (req, res) {
         }
     });
 };
-
 
 module.exports.editPermission = function (req, res) {
     //Not implemented.
