@@ -3,18 +3,27 @@
  */
 var router = require('express').Router();
 var dic = require('./services/dic');
+var good = require('./services/good');
 var user = require('./services/users');
-var role = require('./services/roles');
+var permission = require('./services/permissions');
 
-// dic service
+// dictionary service
 router.get('/dics', dic.list)
     .post('/dics', dic.create);
-
 router.get('/dics/:_id', dic.detail)
-    .put('/dics/:_id', dic.edit)
+    .put('/dics/:_id', dic.update)
     .delete('/dics/:_id', dic.delete);
-
 router.get('/dicTypes', dic.getDicTypes);
+
+// good service
+router.get('/goods', good.list)
+    .post('/goods', good.create);
+router.get('/goods/:_id', good.detail)
+    .put('/goods/:_id', good.update)
+    .delete('/goods/:_id', good.delete);
+router.get('/goodCategories', good.getgoodCategories);
+
+router.post('/pics', good.uploadPics);
 
 router.get('/users', user.userList)
     .post('/users', user.createUser);
@@ -23,6 +32,9 @@ router.get('/users/:_id', user.userDetail)
     .put('/users/:_id', user.editUser)
     .delete('/users/:_id', user.deleteUser);
 
-router.get('/roles', role.roleList);
+router.get('/permissions', permission.permissionList)
+    .post('/permissions', permission.createPermission);
+
+router.delete('/permissions/:_id',permission.deletePermission);
 
 module.exports = router;

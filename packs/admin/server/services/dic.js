@@ -1,7 +1,7 @@
 /**
  * Created by xz_liu on 2016/3/18.
  */
-var Dic = require('../models/dic').Dic;
+var Dic = require('../../../shared/models').Dic;
 
 
 module.exports.list = function (req, res) {
@@ -43,9 +43,15 @@ module.exports.create = function (req, res) {
 };
 
 
-module.exports.edit = function (req, res) {
-    //Not implemented.
-    res.send('edit ' + req.body._id);
+module.exports.update = function (req, res) {
+    Dic.update({_id: req.body._id}, req.body, function (err) {
+        if (err) {
+            res.json({code: 500, message: err});
+        }
+        else {
+            res.json({code: 0});
+        }
+    });
 };
 
 

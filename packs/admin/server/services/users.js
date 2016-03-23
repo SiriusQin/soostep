@@ -1,8 +1,5 @@
-/**
- * Created by Jesse Qin on 3/19/2016.
- */
 
-var User = require('../models/user').User;
+var User = require('../../../shared/models').User;
 
 module.exports.userList = function (req, res) {
     User.find().lean().exec(function (err, user) {

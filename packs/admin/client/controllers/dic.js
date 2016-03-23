@@ -2,10 +2,9 @@
  * Created by xz_liu on 2016/3/9.
  */
 var app = angular.module('admin');
-var title = 'Dictionary Management';
 
 app.controller('Dic', function ($scope, $http, $route) {
-    document.title = title;
+    document.title = 'Dictionary Management';
 
     $http.get('/dics').success(function (result) {
         $scope.dics = result;
@@ -13,7 +12,6 @@ app.controller('Dic', function ($scope, $http, $route) {
 
     $http.get('/dicTypes').success(function (result) {
         $scope.dicTypes = result;
-        //$scope.dicTypes.append(result);
     });
 
     $scope.getDic = function (_id) {
@@ -24,8 +22,8 @@ app.controller('Dic', function ($scope, $http, $route) {
         });
     };
 
-    $scope.createDic = function (order) {
-        $http.post('/dics', order).success(function (result) {
+    $scope.createDic = function (dic) {
+        $http.post('/dics', dic).success(function (result) {
             if (!result.code) {
                 $route.reload();
             }

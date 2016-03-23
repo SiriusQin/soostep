@@ -1,8 +1,5 @@
-/**
- * Created by Jesse Qin on 3/19/2016.
- */
 
-var Permission = require('../models/permission').Permission;
+var Permission = require('../../../shared/models').Permission;
 
 module.exports.permissionList = function (req, res) {
     Permission.find().lean().exec(function (err, permission) {
