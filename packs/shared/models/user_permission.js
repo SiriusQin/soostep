@@ -3,9 +3,9 @@ var mongoose = require('mongoose');
 
 var UserPermissionSchema = new mongoose.Schema({
 
-    UserId: ObjectId,
+    UserId: mongoose.Schema.Types.ObjectId,
 
-    PermissionId: ObjectId,
+    PermissionId: mongoose.Schema.Types.ObjectId,
 
     //Pid: String,
 
@@ -13,7 +13,7 @@ var UserPermissionSchema = new mongoose.Schema({
 
     AssignedTime: { type: Date, default: Date.now},
 
-    //AdminUserId: ObjectId,
+    //AdminUserId: mongoose.Schema.Types.ObjectId,
 
     Enabled: { type: Boolean, default: true}
 });

@@ -15,7 +15,7 @@ app.config(function ($routeProvider) {
         }).
         when('/users', {
             controller: 'UserManager',
-            templateUrl: 'pages/user_manager.html'
+            templateUrl: 'pages/admin_user_manager.html'
         }).
         when('/permission', {
             controller: 'PermissionManager',

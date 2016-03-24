@@ -5,27 +5,27 @@ var mongoose = require('mongoose');
 
 var UserSchema = new mongoose.Schema({
 
-    Name: String,
+    name: String,
 
-    AppUserId: String,
+    appUserId: String,
 
-    Mobile: String,
+    mobile: String,
 
-    Password: String,
+    password: String,
 
-    Description: String,
+    description: String,
 
-    Enabled: { type: Boolean, default: false},
+    enabled: { type: Boolean, default: false},
 
-    WeChatId: String,
+    weChatId: String,
 
-    IsDeleted: { type: Boolean, default: false},
+    isDeleted: { type: Boolean, default: false},
 
-    LastLoginTime: Date,
+    lastLoginTime: Date,
 
-    CreateTime: { type: Date, default: Date.now},
+    createTime: { type: Date, default: Date.now},
 
-    ActiveTime: Date
+    activeTime: Date
 });
 
 mongoose.model('User', UserSchema);

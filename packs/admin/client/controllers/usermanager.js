@@ -25,10 +25,3 @@ app.controller('UserManager', function ($scope, $http, $route) {
         });*/
     };
 });
-
-app.controller('userIndex', function($scope, $http, $route){
-
-    $http.get('/users').success(function (result) {
-        $scope.users = result;
-    });
-});
