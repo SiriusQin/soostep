@@ -17,12 +17,12 @@ router.get('/dicTypes', dic.getDicTypes);
 
 // good service
 router.get('/goods', good.list)
+    .get('/goodsPaged', good.listPaged)
     .post('/goods', good.create);
 router.get('/goods/:_id', good.detail)
     .put('/goods/:_id', good.update)
     .delete('/goods/:_id', good.delete);
 router.get('/goodCategories', good.getgoodCategories);
-
 router.post('/pics', good.uploadPics);
 
 router.get('/users', user.userList)

@@ -6,7 +6,12 @@ var GoodCategory = require('../../../shared/enums').GoodCategory;
 
 
 module.exports.list = function (req, res) {
-    Good.find()
+    var conditions = {};
+    if (req.query.category) {
+        conditions.category = req.query.category;
+    }
+
+    Good.find(conditions)
         .lean()
         .exec(function (err, doc) {
             if (err) {
@@ -16,6 +21,24 @@ module.exports.list = function (req, res) {
                 res.json(doc);
             }
         });
+};
+
+
+module.exports.listPaged = function (req, res) {
+    var options = {
+        limit: req.query.limit ? parseInt(req.query.limit, null) : 10,
+        page: req.query.page ? parseInt(req.query.page, null) : 1,
+        sort: req.query.sort ? req.query.sort : '_id'
+    };
+
+    Good.pagedFind(options, function (err, output) {
+        if (err) {
+            res.json({code: 500, message: err});
+        }
+        else {
+            res.json(output);
+        }
+    });
 };
 
 

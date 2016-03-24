@@ -10,10 +10,11 @@ app.controller('Good', function ($scope, $http, $route, Upload, $timeout) {
 
     //测试用数据
     $scope.good = {
-        name: '芒果',
+        name: '草莓',
         desc: '描述',
-        category: 'Nut',
+        category: 'Berry',
         pics: [],
+        spec: '1kg',
         provenance: '上海',
         shelfLife: 1,
         storage: '阴凉',
@@ -22,13 +23,14 @@ app.controller('Good', function ($scope, $http, $route, Upload, $timeout) {
         balance: 120
     };
 
-    $http.get('/goods').success(function (result) {
-        $scope.goods = result;
-    });
-
     $http.get('/goodCategories').success(function (result) {
+        commonGetPagedGoods(1);
         $scope.goodCategories = result;
     });
+
+    $scope.getPagedGoods = function (page) {
+        commonGetPagedGoods(page);
+    };
 
     $scope.editGood = function (_id) {
         $http.get('/goods/' + _id).success(function (result) {
@@ -76,7 +78,6 @@ app.controller('Good', function ($scope, $http, $route, Upload, $timeout) {
             file.upload.then(function (response) {
                 $timeout(function () {
                     $scope.good.pics.push(response.data);
-                    console.log();
                 });
             }, function (response) {
                 if (response.status > 0)
@@ -86,5 +87,20 @@ app.controller('Good', function ($scope, $http, $route, Upload, $timeout) {
                     evt.loaded / evt.total));
             });
         });
+    };
+
+    var commonGetPagedGoods = function (page) {
+        $http.get('/goodsPaged?page=' + page).success(function (result) {
+            $scope.goods = [];
+            $scope.goods.push.apply($scope.goods, result.data);
+            $scope.pages = result.pages;
+            $scope.pageArray = getPageArray(result.pages.current, result.pages.total);
+        });
+    };
+
+    var getPageArray = function (current, total) {
+        var start = current > 5 ? current - 4 : 1;
+        var end = total - current > 3 ? current + 4 : total;
+        return _.range(start, end + 1);
     }
 });

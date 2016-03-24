@@ -20,6 +20,9 @@ var GoodSchema = new mongoose.Schema({
     //图片相对路径
     pics: [String],
 
+    //规格
+    spec: String,
+
     //原产地
     provenance: String,
 
@@ -38,5 +41,6 @@ var GoodSchema = new mongoose.Schema({
     //库存
     balance: Number
 });
+GoodSchema.plugin(require('./plugins/paged_find'));
 
 mongoose.model('Good', GoodSchema);

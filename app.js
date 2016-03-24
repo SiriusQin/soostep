@@ -1,3 +1,4 @@
+GLOBAL._ = require('underscore');
 var express = require('express');
 var http = require('http');
 var config = require('config');
@@ -23,10 +24,10 @@ app.use('/', require('./packs/admin/server/routes'))
 
 // 子站点主页映射
 app.get('/', function (req, res) {
-    console.log(req);
+    //console.log(req);
     res.render('index.html');
 }).get('/pc', function (req, res) {
-    console.log(req);
+    //console.log(req);
     res.render('orders_index.html');
 }).get('/admin', function (req, res) {
     //console.log(req);

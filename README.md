@@ -1,4 +1,4 @@
-soostep
+#soostep
 
 ## 介绍
 
@@ -22,9 +22,15 @@ web,mobile,platform
 
 ## 安装及运行步骤
 
-1. 全局安装打包工具gulp:
-    $ npm install gulp -g
-2. 安装依赖模块:
-    $ npm install
-3. 用gulp打包->运行->监听文件变化:
-    $ gulp
+1.全局安装打包工具gulp:
+```bash
+$ npm install gulp -g
+```
+2.安装依赖模块:
+```bash
+$ npm install
+```
+3.用gulp打包->运行->监听文件变化:
+```bash
+$ gulp
+```
