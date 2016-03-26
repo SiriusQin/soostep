@@ -19,6 +19,7 @@ require('./models/order');
 require('./models/order_user_good');
 require('./models/user');
 require('./models/permission');
+require('./models/user_permission');
 
 module.exports.Dic = mongoose.model('Dic');
 module.exports.Good = mongoose.model('Good');
@@ -27,3 +28,4 @@ module.exports.Order = mongoose.model('Order');
 module.exports.OrderUserGood = mongoose.model('OrderUserGood');
 module.exports.User = mongoose.model('User');
 module.exports.Permission = mongoose.model('Permission');
+module.exports.UserPermission = mongoose.model('UserPermission');

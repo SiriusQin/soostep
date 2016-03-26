@@ -7,13 +7,17 @@ var UserSchema = new mongoose.Schema({
 
     name: String,
 
-    appUserId: String,
+    appUserId: [String],
 
     mobile: String,
+
+    email: String,
 
     password: String,
 
     description: String,
+
+    role: String,
 
     enabled: { type: Boolean, default: false},
 
@@ -21,11 +25,13 @@ var UserSchema = new mongoose.Schema({
 
     isDeleted: { type: Boolean, default: false},
 
-    lastLoginTime: Date,
+    lastLoginTime: [Date],
 
     createTime: { type: Date, default: Date.now},
 
-    activeTime: Date
+    activeTime: [Date]
 });
+
+UserSchema.index({ name: 1 });
 
 mongoose.model('User', UserSchema);

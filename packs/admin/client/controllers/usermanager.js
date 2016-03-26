@@ -8,20 +8,37 @@ var title = 'User Management';
 app.controller('UserManager', function ($scope, $http, $route) {
     document.title = title;
 
-    $http.get('/roles').success(function (result){
-        $scope.Roles = result;
+    $http.get('/users').success(function (result){
+        $scope.Users = result;
+    });
+
+    $http.get('/roleCategories').success(function (result){
+        $scope.RoleCategories = result;
     });
 
     $scope.User = {
-        userName: ''
+        name: '',
+        weChatId: '',
+        mobile: '',
+        email: '',
+        description: '',
+        role: ''
     };
 
-    $scope.createUser = function (User) {
+    $scope.createUser = function (user) {
 
-        /*$http.post('/users', user).success(function (result) {
+        $http.post('/users', user).success(function (result) {
             if (!result.code) {
                 $route.reload();
             }
-        });*/
+        });
+    };
+
+    $scope.deleteUser = function(_id){
+        $http.delete('/users/' + _id).success(function (result) {
+            if (result.code == 0) {
+                $route.reload();
+            }
+        });
     };
 });

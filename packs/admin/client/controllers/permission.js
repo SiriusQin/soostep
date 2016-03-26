@@ -9,11 +9,15 @@ app.controller('PermissionManager', function ($scope, $http, $route) {
         $scope.Permissions = result;
     });
 
+    $http.get('/roleCategories').success(function (result){
+        $scope.RoleCategories = result;
+    });
+
     $scope.Permission = {
-        permissionType: 'test',
+        permissionType: '',
         name: '',
-        featureHash: 'test',
-        description: 'test'
+        featureHash: '',
+        description: ''
     };
 
     $scope.createPermission = function (permission) {

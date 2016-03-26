@@ -1,6 +1,9 @@
 
 var User = require('../../../shared/models').User;
 
+var UserPermission = require('../../../shared/models').UserPermission;
+var Permission = require('../../../shared/models').Permission;
+
 module.exports.userList = function (req, res) {
     User.find().lean().exec(function (err, user) {
         if (err) {
@@ -32,7 +35,19 @@ module.exports.createUser = function (req, res) {
             res.json({code: 500, message: err});
         }
         else {
-            res.json(user._id.toString());
+            Permission.findOne({'permissionType': req.body.role}, function(err, doc){
+
+                var userPermission = new UserPermission({userId: user._id, permissionId: doc._id});
+
+                userPermission.save(function(err){
+                    if(err) {
+                        res.json({code: 500, message: err});
+                    }
+                    else{
+                        res.json(user._id.toString());
+                    }
+                });
+            });
         }
     });
 };

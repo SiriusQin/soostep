@@ -6,6 +6,7 @@ var dic = require('./services/dic');
 var good = require('./services/good');
 var user = require('./services/users');
 var permission = require('./services/permissions');
+var role = require('./services/role');
 
 // dictionary service
 router.get('/dics', dic.list)
@@ -36,5 +37,7 @@ router.get('/permissions', permission.permissionList)
     .post('/permissions', permission.createPermission);
 
 router.delete('/permissions/:_id',permission.deletePermission);
+
+router.get('/roleCategories', role.getRoleCategories);
 
 module.exports = router;

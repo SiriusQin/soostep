@@ -3,19 +3,21 @@ var mongoose = require('mongoose');
 
 var UserPermissionSchema = new mongoose.Schema({
 
-    UserId: mongoose.Schema.Types.ObjectId,
+    userId: mongoose.Schema.Types.ObjectId,
 
-    PermissionId: mongoose.Schema.Types.ObjectId,
+    permissionId: mongoose.Schema.Types.ObjectId,
 
     //Pid: String,
 
-    IsDeleted: Boolean,
+    isDeleted: { type: Boolean, default: false},
 
-    AssignedTime: { type: Date, default: Date.now},
+    assignedTime: { type: Date, default: Date.now },
 
     //AdminUserId: mongoose.Schema.Types.ObjectId,
 
-    Enabled: { type: Boolean, default: true}
+    enabled: { type: Boolean, default: true}
 });
+
+UserPermissionSchema.index({ UserId: 1, PermissionId: 1 });
 
 mongoose.model('UserPermission', UserPermissionSchema);

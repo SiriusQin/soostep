@@ -7,11 +7,11 @@ var PermissionSchema = new mongoose.Schema({
 
     name: { type: String, unique: true },
 
-    featureHash: String,
+    featureHash: [String],
 
     description: String,
 
-    isActived: { type: Boolean, default: false }
+    isActived: { type: Boolean, default: true }
 });
 
 mongoose.model('Permission', PermissionSchema);
